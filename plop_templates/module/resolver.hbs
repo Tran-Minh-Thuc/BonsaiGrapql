@@ -1,0 +1,41 @@
+{{!-- import logger from "../../helper/logger"; --}}
+import * as {{camelCase name}}Service from "./{{camelCase name}}.service";
+{{!-- import Context from '../../helper/graphql/context'; --}}
+
+export const {{camelCase name}}Resolver = {
+    Query: {
+        getAll{{properCase name}}: async (root:{{properCase name}}, args:any, context) => {
+            const { q } = args;
+            const {{camelCase (pluralize name)}}: any = await {{camelCase name}}Service.getAll{{properCase name}}(q);
+
+            return {{camelCase (pluralize name)}};
+        },
+
+        getOne{{properCase name}}: async (root:{{properCase name}}, args:any, context) => {
+            const { _id } = args;
+            const {{camelCase name}}: {{properCase name}} = await {{camelCase name}}Service.getOne{{properCase name}}(_id);
+
+            return {{camelCase name}};
+        },
+    },
+
+    Mutation: {
+        create{{properCase name}}: async (root:{{properCase name}}, args:any, context) => {
+            const {data}= args;
+
+            return await {{camelCase name}}Service.create{{properCase name}}(data);
+        },
+
+        update{{properCase name}}: async (root:{{properCase name}}, args:any, context) => {    
+            const {_id, data} = args;
+
+            return await {{camelCase name}}Service.update{{properCase name}}(_id, data);
+        },
+
+        delete{{properCase name}}: async (root:{{properCase name}}, args:any, context) => {
+            const {_id} = args;
+
+            return await {{camelCase name}}Service.delete{{properCase name}}(_id); 
+        }
+    }
+}

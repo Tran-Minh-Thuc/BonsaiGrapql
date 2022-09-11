@@ -1,0 +1,26 @@
+{
+    "name": "bonsai",
+    "version": "1.0.0",
+    "description": "``` bash\r npm init \r npm install apollo-server graphql graphql-tools mongoose @types/node\r npm install typescript ts-node ts-lib -g\r npm install dotenv\r npm install nodemon --save-dev\r ```",
+    "main": "index.js",
+    "scripts": {
+        "watch": "npx tsc -w",
+        "dev": "nodemon ./dist/index.js",
+        "plop": "plop"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "apollo-server": "^3.10.2",
+        "autoloader-ts": "^2.2.1",
+        "dotenv": "^16.0.2",
+        "graphql": "^16.6.0",
+        "lodash": "^4.17.21",
+        "mongoose": "^6.6.0",
+        "plop": "^3.1.1",
+        "pluralize": "^8.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.19"
+    }
+}

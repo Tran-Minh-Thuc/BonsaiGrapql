@@ -1,0 +1,125 @@
+import { QueryInput } from "../../base/crudService";
+{{!-- import logger from "../../helper/logger"; --}}
+import getDataWithPagination from "../../helper/service/getDataWithPagination";
+import { {{camelCase name}}Model } from "./{{camelCase name}}.model";
+
+export async function getAll{{properCase name}}(queryInput: QueryInput = {}) {
+        return getDataWithPagination(queryInput, {{camelCase name}}Model);
+    }
+
+export async function getOne{{properCase name}}(_id: String) {
+        try {
+            const {{camelCase name}}: {{properCase name}} = await {{camelCase name}}Model.findById(_id).lean();
+            
+            return {{camelCase name}};
+        } catch (err) {
+            console.log(err);
+
+            return err;
+        }
+    }
+
+export async function create{{properCase name}}({{camelCase name}}Args: {{properCase name}}) {
+        try {
+            const {{camelCase name}}: {{properCase name}} = await {{camelCase name}}Model.create({{camelCase name}}Args);
+            
+            return {{camelCase name}};
+        } catch (err) {
+            console.log(err);
+
+            return err;
+        }
+    }
+
+export async function update{{properCase name}}(_id: String, data: any) {
+        try {
+            const {{camelCase name}} = await {{camelCase name}}Model.findByIdAndUpdate(
+                    _id ,
+                    {
+                        $set: data
+                    },
+                    {
+                        new: true
+                    }
+                )
+
+            return {{camelCase name}};
+        } catch (err) {
+            console.log(err);
+
+            return err;
+        }
+    }
+
+export async function delete{{properCase name}}(_id: String) {
+        try {
+            const {{camelCase name}} = await {{camelCase name}}Model.findByIdAndDelete(_id);
+            
+            return {{camelCase name}};
+        } catch (err) {
+            console.log(err);
+            
+            return err;
+        }
+    }
+{{!-- export default {
+    async getAll{{properCase name}}(queryInput: QueryInput = {}) {
+        return getDataWithPagination(queryInput, {{camelCase name}}Model);
+    },
+
+    async getOne{{properCase name}}(_id: String) {
+        try {
+            const {{camelCase name}}: {{properCase name}} = await {{camelCase name}}Model.findById(_id).lean();
+            
+            return {{camelCase name}};
+        } catch (err) {
+            console.log(err);
+
+            return err;
+        }
+    },
+
+    async create{{properCase name}}({{camelCase name}}Args: {{properCase name}}) {
+        try {
+            const {{camelCase name}}: {{properCase name}} = await {{camelCase name}}Model.create({{camelCase name}}Args);
+            
+            return {{camelCase name}};
+        } catch (err) {
+            console.log(err);
+
+            return err;
+        }
+    },
+
+    async update{{properCase name}}(_id: String, data: any) {
+        try {
+            const {{camelCase name}} = await {{camelCase name}}Model.findByIdAndUpdate(
+                    _id ,
+                    {
+                        $set: data
+                    },
+                    {
+                        new: true
+                    }
+                )
+
+            return {{camelCase name}};
+        } catch (err) {
+            console.log(err);
+
+            return err;
+        }
+    },
+
+    async delete{{properCase name}}(_id: String) {
+        try {
+            const {{camelCase name}} = await {{camelCase name}}Model.findByIdAndDelete(_id);
+            
+            return {{camelCase name}};
+        } catch (err) {
+            console.log(err);
+            
+            return err;
+        }
+    }
+} --}}

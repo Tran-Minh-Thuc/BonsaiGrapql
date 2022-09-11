@@ -1,0 +1,135 @@
+import fetchAPI from "../../helper/Fetch";
+import * as database from '../../config/database.config';
+
+beforeAll(async () => {
+    await database.connect();
+});
+
+afterAll(() => {
+    database.disconnect();
+});
+
+describe('{{properCase name}}', () => {
+    let new{{properCase name}} = undefined;
+
+    // --------------- CREATE {{constantCase name}} ------------------
+    it('Create {{properCase name}} return Object', async () => {
+        const query= `
+                mutation Create{{properCase name}}($data: Create{{properCase name}}Input) {
+                    create{{properCase name}}(data: $data) {
+                        _id
+                        name
+                    }
+                }`;
+        
+        const variables = {
+            "data": {
+                "name": "MockName"
+            }
+        };
+        
+        let data = await fetchAPI(query, variables);
+        new{{properCase name}} = data.data?.create{{properCase name}};
+        
+        // data.create{{properCase name}} is Object
+        expect(data.data?.create{{properCase name}}).toBeInstanceOf(Object);
+        expect(data.data?.create{{properCase name}}.name).toBe("MockName");
+    });
+
+    // --------------- GET ALL {{constantCase name}} ------------------
+    it('Get all {{properCase name}} return Array', async () => {
+        const query=  `
+                query GetAll{{properCase name}} {
+                    getAll{{properCase name}} {
+                        data {
+                            name
+                        }
+                    }
+                }`;
+
+        let data = await fetchAPI(query, {});
+        
+        // data.getAll{{properCase name}} is array
+        expect(data.data?.getAll{{properCase name}}.data).toBeInstanceOf(Array);
+    });
+
+    // --------------- GET {{constantCase name}} BY ID ------------------
+    it('Get {{properCase name}} by ID return Object', async () => {
+        const query= `
+                query GetOne{{properCase name}}($id: ID!) {
+                    getOne{{properCase name}}(_id: $id) {
+                        name
+                    }
+                }`;
+
+        const variables = {
+            id: new{{properCase name}}._id
+        };
+        
+        let data = await fetchAPI(query, variables);
+        
+        // data.getOne{{properCase name}} is Object
+        expect(data.data?.getOne{{properCase name}}).toBeInstanceOf(Object);
+    });
+
+    it('Get {{properCase name}} by ID return null', async () => {
+        const query= `
+                query GetOne{{properCase name}}($id: ID!) {
+                    getOne{{properCase name}}(_id: $id) {
+                        name
+                    }
+                }`;
+        const idNotExist = "62946befd630f3b583da0099";
+
+        const variables = {
+            id: idNotExist // not exist id
+        };
+        
+        let data = await fetchAPI(query, variables);
+        
+        // data.getOne{{properCase name}} is Null
+        expect(data.data?.getOne{{properCase name}}).toBe(null);
+    });
+
+    // --------------- UPDATE {{constantCase name}} ------------------
+        it('Update {{properCase name}} return Object', async () => {
+            const query= `
+                    mutation Update{{properCase name}}($id: ID!, $data: Update{{properCase name}}Input) {
+                        update{{properCase name}}(_id: $id, data: $data) {
+                            name
+                        }
+                    }`;
+        
+        const variables = {
+            "id": new{{properCase name}}._id,
+            "data": {
+                "name": "Update mock name"
+            }
+        };
+        
+        let data = await fetchAPI(query, variables);
+        
+        // data.update{{properCase name}} is Object
+        expect(data.data?.update{{properCase name}}).toBeInstanceOf(Object);
+        expect(data.data?.update{{properCase name}}.name).toBe("Update mock name");
+    });
+
+    // --------------- DELETE {{constantCase name}} ------------------
+    it('Delete {{properCase name}} return Object', async () => {
+        const query= `
+                mutation Delete{{properCase name}}($id: ID!) {
+                    delete{{properCase name}}(_id: $id) {
+                        _id
+                    }
+                }`;
+        
+        const variables = {
+            "id": new{{properCase name}}._id,
+        };
+        
+        let data = await fetchAPI(query, variables);
+        
+        // data.delete{{properCase name}} is Object
+        expect(data.data?.delete{{properCase name}}).toBeInstanceOf(Object);
+    });
+});

@@ -1,0 +1,15 @@
+import { model, Schema } from "mongoose";
+{{!-- import { getModelDataLoader } from "../../helper/dataloader"; --}}
+
+const {{camelCase name}}Schema = new Schema(
+    {
+        name: { type: String, required: true }
+    },
+    {
+        timestamps: true,
+        collection: "{{name}}s"
+    }
+)
+
+export const {{camelCase name}}Model = model<{{properCase name}}>("{{properCase name}}", {{camelCase name}}Schema);
+{{!-- export const {{camelCase name}}Loader = getModelDataLoader({{camelCase name}}Model); --}}
