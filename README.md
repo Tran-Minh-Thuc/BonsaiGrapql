@@ -69,23 +69,23 @@ tsc --init
 
 ## Running
 
-### Create new module (empty or base)
-
-  ```bash
-npm run plop
-```
-
 ### Install module
 
   ```bash
 npm install 
 ```
 
-### run
+### run ( running dev and watch in parallel )
 
   ```bash
 npm run watch
 npm run dev
+```
+
+### Create new module (empty or base)
+
+  ```bash
+npm run plop
 ```
 
 ## Construct
