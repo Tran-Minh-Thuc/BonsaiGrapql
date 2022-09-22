@@ -12,8 +12,10 @@ export default gql`
     # TYPE
     type Test {
         _id: ID
+        productId: ID
         name: String
 
+        product: Product
         createdAt: Float
         updatedAt: Float
     }
@@ -37,6 +39,7 @@ export default gql`
 
     # INPUT
     input CreateTestInput {
+        productId: ID
         name: String!
     }
 

@@ -11,11 +11,16 @@ export async function getOne{{properCase name}}(_id: String) {
         try {
             const {{camelCase name}}: {{properCase name}} = await {{camelCase name}}Model.findById(_id).lean();
             
-            return {{camelCase name}};
+            return  {
+                code: '200',
+                status: '',
+                mesage: '',
+                data: {{camelCase name}},
+            };
         } catch (err) {
             console.log(err);
 
-            return err;
+            return null;
         }
     }
 
@@ -23,11 +28,16 @@ export async function create{{properCase name}}({{camelCase name}}Args: {{proper
         try {
             const {{camelCase name}}: {{properCase name}} = await {{camelCase name}}Model.create({{camelCase name}}Args);
             
-            return {{camelCase name}};
+            return {
+                code: '200',
+                status: '',
+                mesage: '',
+                data: {{camelCase name}},
+            };
         } catch (err) {
             console.log(err);
 
-            return err;
+            return null;
         }
     }
 
@@ -43,11 +53,16 @@ export async function update{{properCase name}}(_id: String, data: any) {
                     }
                 )
 
-            return {{camelCase name}};
+            return {
+                code: '200',
+                status: '',
+                mesage: '',
+                data: {{camelCase name}},
+            };
         } catch (err) {
             console.log(err);
 
-            return err;
+            return null;
         }
     }
 
@@ -55,11 +70,16 @@ export async function delete{{properCase name}}(_id: String) {
         try {
             const {{camelCase name}} = await {{camelCase name}}Model.findByIdAndDelete(_id);
             
-            return {{camelCase name}};
+            return {
+                code: '200',
+                status: '',
+                mesage: '',
+                data: {{camelCase name}},
+            };
         } catch (err) {
             console.log(err);
             
-            return err;
+            return null;
         }
     }
 {{!-- export default {

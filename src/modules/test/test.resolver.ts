@@ -1,4 +1,6 @@
 import * as testService from "./test.service";
+import { productLoader } from "../product/product.model";
+import { GraphqlResolver } from "../../helper/graphql/resolver";
 
 export const testResolver = {
     Query: {
@@ -35,5 +37,8 @@ export const testResolver = {
 
             return await testService.deleteTest(_id); 
         }
-    }
+    },
+    Test: {
+        product: GraphqlResolver.load(productLoader, "productId"),
+    },
 }

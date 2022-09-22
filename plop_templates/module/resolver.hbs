@@ -1,6 +1,8 @@
 {{!-- import logger from "../../helper/logger"; --}}
 import * as {{camelCase name}}Service from "./{{camelCase name}}.service";
+//import { testLoader } from "../test/test.model";
 {{!-- import Context from '../../helper/graphql/context'; --}}
+import { GraphqlResolver } from "../../helper/graphql/resolver";
 
 export const {{camelCase name}}Resolver = {
     Query: {
@@ -37,5 +39,8 @@ export const {{camelCase name}}Resolver = {
 
             return await {{camelCase name}}Service.delete{{properCase name}}(_id); 
         }
-    }
+    },
+        Product: {
+       // test: GraphqlResolver.load(testLoader, "testId"),
+    },
 }

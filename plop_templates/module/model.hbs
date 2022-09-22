@@ -1,9 +1,11 @@
 import { model, Schema } from "mongoose";
-{{!-- import { getModelDataLoader } from "../../helper/dataloader"; --}}
+import { getModelDataLoader } from "../../helper/dataloader";
 
 const {{camelCase name}}Schema = new Schema(
     {
-        name: { type: String, required: true }
+        name: { type: String, required: true },
+        // testId: { type: Schema.Types.ObjectId, ref: "Test", required: true },
+
     },
     {
         timestamps: true,
@@ -12,4 +14,4 @@ const {{camelCase name}}Schema = new Schema(
 )
 
 export const {{camelCase name}}Model = model<{{properCase name}}>("{{properCase name}}", {{camelCase name}}Schema);
-{{!-- export const {{camelCase name}}Loader = getModelDataLoader({{camelCase name}}Model); --}}
+export const {{camelCase name}}Loader = getModelDataLoader({{camelCase name}}Model);

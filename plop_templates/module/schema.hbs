@@ -4,6 +4,7 @@ import { BaseDocument } from "../../base/baseModel"
 declare global {
     type {{properCase name}} = BaseDocument & {
         _id?: string,
+        //testId?: string,
         name?: string,
     }
 }
@@ -12,16 +13,25 @@ export default gql`
     # TYPE
     type {{properCase name}} {
         _id: ID
+        #testId: ID
         name: String
 
+        #test:Test
         createdAt: Float
         updatedAt: Float
+    }
+
+        type Result {
+        code: String
+        status: String
+        mesage: String
+        data: {{properCase name}}
     }
 
     #ROOT TYPE
     type Query {
         getAll{{properCase name}}(q: QueryInput): {{properCase name}}PageData
-        getOne{{properCase name}}(_id: ID!): {{properCase name}}
+        getOne{{properCase name}}(_id: ID!): Result
     }
 
     type {{properCase name}}PageData {
@@ -30,9 +40,9 @@ export default gql`
     }
 
     type Mutation {
-        create{{properCase name}}(data: Create{{properCase name}}Input): {{properCase name}}
-        update{{properCase name}}(_id: ID!, data: Update{{properCase name}}Input): {{properCase name}}
-        delete{{properCase name}}(_id: ID!): {{properCase name}}
+        create{{properCase name}}(data: Create{{properCase name}}Input): Result
+        update{{properCase name}}(_id: ID!, data: Update{{properCase name}}Input): Result
+        delete{{properCase name}}(_id: ID!): Result
     }
 
     # INPUT

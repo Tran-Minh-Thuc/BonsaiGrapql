@@ -1,8 +1,10 @@
 import { model, Schema } from "mongoose";
+import { getModelDataLoader } from "../../helper/dataloader";
 
 const testSchema = new Schema(
     {
-        name: { type: String, required: true }
+        name: { type: String, required: true },
+        productId: { type: Schema.Types.ObjectId, ref: "Product", required: true },
     },
     {
         timestamps: true,
@@ -11,3 +13,4 @@ const testSchema = new Schema(
 )
 
 export const testModel = model<Test>("Test", testSchema);
+export const testLoader = getModelDataLoader(testModel);
