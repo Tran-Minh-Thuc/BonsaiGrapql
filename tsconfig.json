@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
     "target": "es2016",
     "lib": [
       "es6"
@@ -18,7 +19,7 @@
     "node_modules",
     "logs",
     "dist",
-    "plop-templates",
+    "plop_templates",
   ],
   "ts-node": {
     "files": true
