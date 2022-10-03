@@ -1,8 +1,14 @@
 import "dotenv/config";
 import * as database from "./config/database.config";
 import _ from "lodash";
-import { ApolloServer,gql } from "apollo-server";
-import { loadGraphqlResolver,loadGraphqlSchema } from "./helper/autoloader";
+import { ApolloServer, gql } from "apollo-server";
+import { loadGraphqlResolver, loadGraphqlSchema } from "./helper/autoloader";
+import { shield, rule, allow, deny, and, not, IRule } from "graphql-shield";
+import jwt from "jsonwebtoken"
+import { applyMiddleware, IMiddleware } from "graphql-middleware";
+import { makeExecutableSchema } from "graphql-tools";
+import { permission } from "./helper/shield";
+
 
 const main = async () => {
     // connect to database
@@ -49,6 +55,8 @@ const main = async () => {
         `
     ];
 
+
+
     //ceate resolvers
     let resolvers: any = {
         Query: {
@@ -63,15 +71,35 @@ const main = async () => {
     // Load .resolver.ts
     const grapqlResolver = await loadGraphqlResolver();
     resolvers = _.merge(resolvers, grapqlResolver);
+    
+    const schema = applyMiddleware(
+        makeExecutableSchema({
+            typeDefs,
+            resolvers
+        }),
+        shield(permission)
+    )
+    
 
     const server = new ApolloServer({
         typeDefs: typeDefs,
-        resolvers: resolvers
+        resolvers: resolvers,
+        schema: schema,
+        context: (req) => {
+            user: {
+                try {
+                    const jwtToken = req.req.headers.authorization.split(" ")[1];
+                    const token = jwt.verify(jwtToken, process.env.PRIVATE_KEY);
+                    return token
+                } catch (e) {
+                    return null;
+                }
+            }
+        }
     })
 
-    server.listen({port: process.env.PORT}).then(({url})=>{
+    server.listen({ port: process.env.PORT }).then(({ url }) => {
         console.log(`[Info] server ready at ${url}`);
     })
-
 }
 main();
