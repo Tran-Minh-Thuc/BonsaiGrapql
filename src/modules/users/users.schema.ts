@@ -41,22 +41,22 @@ export default gql`
 
     #ROOT TYPE
     type Query {
-        getAllUsers(q: QueryInput): ResultUsers
-        getById(_id:ID): ResultResponse
-        getByName(name:String): ResultUsers
-        getByEmail(email: String): ResultResponse
-        getByPhone(phone: String): ResultResponse
+        getAllUsers(q: QueryInput): ResultResponseUserMany
+        getUserById(_id:ID): ResultResponseUser
+        getUserByName(name:String): ResultResponseUserMany
+        getUserByEmail(email: String): ResultResponseUser
+        getUserByPhone(phone: String): ResultResponseUser
     }
 
    
-    type ResultResponse {
+    type ResultResponseUser {
         code: Int
         status: Boolean
         message: String
         data: Users
     }
 
-    type ResultUsers {
+    type ResultResponseUserMany {
         code: Int
         status: Boolean
         message:String
@@ -82,12 +82,12 @@ export default gql`
     type Mutation {
         login(email:String,password:String,rememberMe:Boolean) : LoginResponse
         sendActiveCode(email:String) : SendCodeResponse
-        register(user:registerInput) : ResultResponse
-        updateById(_id:ID,user:userInput) : ResultResponse
-        activeByIdAndCode(_id:ID,code:String) : ResultResponse
-        updatePassword(_id:ID,password:String) : ResultResponse
-        deleteById(_id:ID): ResultResponse
-        uploadImageById(file: Upload): ResultResponse
+        register(user:registerInput) : ResultResponseUser
+        updateUserById(_id:ID,user:userInput) : ResultResponseUser
+        activeByIdAndCode(_id:ID,code:String) : ResultResponseUser
+        updateUserPassword(_id:ID,password:String) : ResultResponseUser
+        deleteUserById(_id:ID): ResultResponseUser
+        uploadImageById(file: Upload): ResultResponseUser
     }
 
     # INPUT

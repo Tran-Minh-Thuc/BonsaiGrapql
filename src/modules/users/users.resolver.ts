@@ -32,7 +32,7 @@ export const usersResolver = {
             }
         },
 
-        getById: async (root: Users, args: any, context) => {
+        getUserById: async (root: Users, args: any, context) => {
             const { _id } = args
             if(_id === undefined){
                 return {
@@ -42,7 +42,7 @@ export const usersResolver = {
                     data: null
                 }
             }
-            const user = await usersService.getById(_id);
+            const user = await usersService.getUserById(_id);
             if (user === null) {
                 return {
                     code: httpResponse.INTERNAL_SERVER_ERROR.CODE,
@@ -67,7 +67,7 @@ export const usersResolver = {
                 data: user
             }
         },
-        getByName: async (root: Users, args: any, context) => {
+        getUserByName: async (root: Users, args: any, context) => {
             const { name } = args
             if(name === undefined){
                 return {
@@ -102,7 +102,7 @@ export const usersResolver = {
                 data: user
             }
         },
-        getByEmail: async (root: Users, args: any, context) => {
+        getUserByEmail: async (root: Users, args: any, context) => {
             const { email } = args
             if(email === undefined){
                 return {
@@ -138,7 +138,7 @@ export const usersResolver = {
             }
 
         },
-        getByPhone: async (root: Users, args: any, context) => {
+        getUserByPhone: async (root: Users, args: any, context) => {
             const { phone } = args
             if(phone === undefined){
                 return {
@@ -401,7 +401,7 @@ export const usersResolver = {
                 data: createUser
             };
         },
-        updateById: async (root: Users, args: any, context)=>{
+        updateUserById: async (root: Users, args: any, context)=>{
             const {_id,user} = args
 
 
@@ -420,7 +420,7 @@ export const usersResolver = {
                     };
                 }
             
-            const userDB = await usersService.getById(_id);
+            const userDB = await usersService.getUserById(_id);
 
             if(userDB === null || userDB.length == 0){
                 return {
@@ -539,7 +539,7 @@ export const usersResolver = {
                 }
             }
 
-            const user = await usersService.getById(_id);
+            const user = await usersService.getUserById(_id);
             if(user === null){
                 return {
                     code: httpResponse.INTERNAL_SERVER_ERROR.CODE,
@@ -585,7 +585,7 @@ export const usersResolver = {
                 data:activeReuslt
             }
         },
-        updatePassword: async (root: Users, args: any, context)=>{
+        updateUserPassword: async (root: Users, args: any, context)=>{
             const { _id, password } = args;
             if (_id === undefined || password === undefined) {
                 return {
@@ -603,7 +603,7 @@ export const usersResolver = {
                 }
             }
 
-            const user = await usersService.getById(_id);
+            const user = await usersService.getUserById(_id);
             if(user === null){
                 return {
                     code: httpResponse.INTERNAL_SERVER_ERROR.CODE,
@@ -645,7 +645,7 @@ export const usersResolver = {
                 data:changePassword
             }
         },
-        deleteById: async (root: Users, args: any, context)=>{
+        deleteUserById: async (root: Users, args: any, context)=>{
             const {_id} = args
             if(_id == undefined){
                 return {
@@ -655,7 +655,7 @@ export const usersResolver = {
                 }
             }
 
-            const user = await usersService.getById(_id);
+            const user = await usersService.getUserById(_id);
 
             if(user === null){
                 return {

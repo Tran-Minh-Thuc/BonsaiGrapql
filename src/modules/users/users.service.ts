@@ -10,7 +10,7 @@ export async function getAllUsers(queryInput: QueryInput = {}) {
 
 
 
-export async function getById(_id: String): Promise<Users | any> {
+export async function getUserById(_id: String): Promise<Users | any> {
     try {
         const user: Users = await usersModel.findById(_id).lean();
         if (user === null) {

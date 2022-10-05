@@ -142,11 +142,3 @@ export async function getDataPaginationWithQuery(queryInput: QueryInput = {}, qu
         };
     });
 }
-
-
-export async function paginationByData(queryInput: QueryInput = {},data:any) {
-    const limit = queryInput.limit || 10;
-    const page = queryInput.page || 1;
-    const skip = ((queryInput.page || 1) - 1) * limit || 0;
-    const order = queryInput.order;
-}
