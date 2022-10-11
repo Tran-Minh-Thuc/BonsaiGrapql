@@ -1,6 +1,9 @@
 import { QueryInput } from "../../base/crudService";
 import getDataWithPagination from "../../helper/service/getDataWithPagination";
 import { cartModel } from "./cart.model";
+import logger from "../../helper/logger";
+
+
 
 export async function getAllCart(queryInput: QueryInput = {}) {
         return getDataWithPagination(queryInput, cartModel);
@@ -17,7 +20,7 @@ export async function getOneCart(_id: String) {
                 data: cart,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -34,7 +37,7 @@ export async function createCart(cartArgs: Cart) {
                 data: cart,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -59,7 +62,7 @@ export async function updateCart(_id: String, data: any) {
                 data: cart,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -76,7 +79,7 @@ export async function deleteCart(_id: String) {
                 data: cart,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
             
             return null;
         }

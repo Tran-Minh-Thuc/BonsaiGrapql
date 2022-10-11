@@ -1,6 +1,7 @@
 import { QueryInput } from "../../base/crudService";
 import getDataWithPagination from "../../helper/service/getDataWithPagination";
 import { orderModel } from "./order.model";
+import logger from "../../helper/logger";
 
 export async function getAllOrder(queryInput: QueryInput = {}) {
         return getDataWithPagination(queryInput, orderModel);
@@ -17,7 +18,7 @@ export async function getOneOrder(_id: String) {
                 data: order,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -34,7 +35,7 @@ export async function createOrder(orderArgs: Order) {
                 data: order,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -59,7 +60,7 @@ export async function updateOrder(_id: String, data: any) {
                 data: order,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -76,7 +77,7 @@ export async function deleteOrder(_id: String) {
                 data: order,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
             
             return null;
         }

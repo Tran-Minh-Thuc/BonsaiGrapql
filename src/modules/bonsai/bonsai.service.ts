@@ -1,6 +1,8 @@
 import { QueryInput } from "../../base/crudService";
 import getDataWithPagination from "../../helper/service/getDataWithPagination";
 import { bonsaiModel } from "./bonsai.model";
+import logger from "../../helper/logger";
+
 
 export async function getAllBonsai(queryInput: QueryInput = {}) {
         return getDataWithPagination(queryInput, bonsaiModel);
@@ -17,7 +19,7 @@ export async function getOneBonsai(_id: String) {
                 data: bonsai,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -34,7 +36,7 @@ export async function createBonsai(bonsaiArgs: Bonsai) {
                 data: bonsai,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -59,7 +61,7 @@ export async function updateBonsai(_id: String, data: any) {
                 data: bonsai,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -76,7 +78,7 @@ export async function deleteBonsai(_id: String) {
                 data: bonsai,
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
             
             return null;
         }

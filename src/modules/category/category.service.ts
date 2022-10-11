@@ -1,5 +1,5 @@
 import { QueryInput } from "../../base/crudService";
-// import logger from "../../helper/logger";
+import logger from "../../helper/logger";
 import getDataWithPagination from "../../helper/service/getDataWithPagination";
 import { categoryModel } from "./category.model";
 // import { shopModel } from "../shop/shop.model";
@@ -15,8 +15,8 @@ export default {
             return category;
 
         } catch (err) {
-            console.log(err);
-            return err;
+           logger.info(err);
+           return null;
         }
     },
 
@@ -26,8 +26,8 @@ export default {
             return category;
 
         } catch (err) {
-            console.log(err);
-            return err
+           logger.info(err);
+           return null
         }
     },
 
@@ -46,8 +46,8 @@ export default {
             return category;
 
         } catch (err) {
-            console.log(err);
-            return err;
+           logger.info(err);
+           return null;
         }
     },
 
@@ -57,8 +57,8 @@ export default {
             return true;
 
         } catch (err) {
-            console.log(err);
-            return err;
+           logger.info(err);
+           return null;
         }
     },
 

@@ -2,6 +2,8 @@ import { QueryInput } from "../../base/crudService";
 // import logger from "../../helper/logger";
 import getDataWithPagination from "../../helper/service/getDataWithPagination";
 import { modelModel } from "./model.model";
+import logger from "../../helper/logger";
+
 
 export default {
     async getAllModel(queryInput: QueryInput = {}) {
@@ -14,7 +16,7 @@ export default {
 
             return model;
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
@@ -26,7 +28,7 @@ export default {
 
             return model;
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
@@ -38,7 +40,7 @@ export default {
 
             return model;
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
@@ -58,7 +60,7 @@ export default {
 
             return model;
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
@@ -78,7 +80,7 @@ export default {
 
             return model;
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
@@ -100,7 +102,7 @@ export default {
 
             return model;
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
@@ -112,7 +114,7 @@ export default {
 
             return model;
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
@@ -124,7 +126,7 @@ export default {
 
             return model;
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
