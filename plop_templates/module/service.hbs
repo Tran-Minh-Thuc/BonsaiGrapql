@@ -1,5 +1,5 @@
 import { QueryInput } from "../../base/crudService";
-{{!-- import logger from "../../helper/logger"; --}}
+import logger from "../../helper/logger";
 import getDataWithPagination from "../../helper/service/getDataWithPagination";
 import { {{camelCase name}}Model } from "./{{camelCase name}}.model";
 
@@ -18,7 +18,7 @@ export async function getOne{{properCase name}}(_id: String) {
                 data: {{camelCase name}},
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -35,7 +35,7 @@ export async function create{{properCase name}}({{camelCase name}}Args: {{proper
                 data: {{camelCase name}},
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -60,7 +60,7 @@ export async function update{{properCase name}}(_id: String, data: any) {
                 data: {{camelCase name}},
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return null;
         }
@@ -77,7 +77,7 @@ export async function delete{{properCase name}}(_id: String) {
                 data: {{camelCase name}},
             };
         } catch (err) {
-            console.log(err);
+            logger.info(err);
             
             return null;
         }
@@ -93,7 +93,7 @@ export async function delete{{properCase name}}(_id: String) {
             
             return {{camelCase name}};
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
@@ -105,7 +105,7 @@ export async function delete{{properCase name}}(_id: String) {
             
             return {{camelCase name}};
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
@@ -125,7 +125,7 @@ export async function delete{{properCase name}}(_id: String) {
 
             return {{camelCase name}};
         } catch (err) {
-            console.log(err);
+            logger.info(err);
 
             return err;
         }
@@ -137,7 +137,7 @@ export async function delete{{properCase name}}(_id: String) {
             
             return {{camelCase name}};
         } catch (err) {
-            console.log(err);
+            logger.info(err);
             
             return err;
         }
