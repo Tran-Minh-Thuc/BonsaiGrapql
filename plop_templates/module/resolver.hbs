@@ -15,7 +15,7 @@ export const {{camelCase name}}Resolver = {
 
         getOne{{properCase name}}: async (root:{{properCase name}}, args:any, context) => {
             const { _id } = args;
-            const {{camelCase name}}: {{properCase name}} = await {{camelCase name}}Service.getOne{{properCase name}}(_id);
+            const {{camelCase name}} = await {{camelCase name}}Service.getOne{{properCase name}}(_id);
 
             return {{camelCase name}};
         },
@@ -40,7 +40,7 @@ export const {{camelCase name}}Resolver = {
             return await {{camelCase name}}Service.delete{{properCase name}}(_id); 
         }
     },
-        Product: {
+   //     Product: {
        // test: GraphqlResolver.load(testLoader, "testId"),
-    },
+   // },
 }

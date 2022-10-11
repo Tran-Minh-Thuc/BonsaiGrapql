@@ -13,15 +13,13 @@ export default gql`
     # TYPE
     type {{properCase name}} {
         _id: ID
-        #testId: ID
         name: String
 
-        #test:Test
         createdAt: Float
         updatedAt: Float
     }
 
-        type Result {
+        type Result{{properCase name}} {
         code: String
         status: String
         mesage: String
@@ -31,7 +29,7 @@ export default gql`
     #ROOT TYPE
     type Query {
         getAll{{properCase name}}(q: QueryInput): {{properCase name}}PageData
-        getOne{{properCase name}}(_id: ID!): Result
+        getOne{{properCase name}}(_id: ID!): Result{{properCase name}}
     }
 
     type {{properCase name}}PageData {
@@ -40,9 +38,9 @@ export default gql`
     }
 
     type Mutation {
-        create{{properCase name}}(data: Create{{properCase name}}Input): Result
-        update{{properCase name}}(_id: ID!, data: Update{{properCase name}}Input): Result
-        delete{{properCase name}}(_id: ID!): Result
+        create{{properCase name}}(data: Create{{properCase name}}Input): Result{{properCase name}}
+        update{{properCase name}}(_id: ID!, data: Update{{properCase name}}Input): Result{{properCase name}}
+        delete{{properCase name}}(_id: ID!): Result{{properCase name}}
     }
 
     # INPUT
