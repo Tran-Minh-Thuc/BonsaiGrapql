@@ -10,6 +10,7 @@ declare global {
         description: string,
         country: string,
         bonus_point:number,
+        image:string[],
     }
 }
 
@@ -22,6 +23,7 @@ export default gql`
         name: String
         quantity: Int
         description: String
+        image: [String]
         country: String
         bonus_point:Float
         
@@ -63,6 +65,8 @@ export default gql`
         description: String
         country: String
         bonus_point:Float
+        image: [String]
+
     }
 
     input UpdateBonsaiInput {
@@ -72,5 +76,7 @@ export default gql`
         description: String
         country: String
         bonus_point:Float
+        image: [String]
+
     }
 `
