@@ -7,6 +7,7 @@ declare global {
         categoryId: string,
         name: string,
         quantity: number,
+        price:number,
         description: string,
         country: string,
         bonus_point:number,
@@ -21,6 +22,7 @@ export default gql`
         categoryId:ID
         
         name: String
+        price:Int,
         quantity: Int
         description: String
         image: [String]
@@ -61,6 +63,7 @@ export default gql`
     input CreateBonsaiInput {
         categoryId:ID
         name: String
+        price:Int
         quantity: Int
         description: String
         country: String
@@ -72,6 +75,7 @@ export default gql`
     input UpdateBonsaiInput {
         categoryId:ID
         name: String
+        price:Int
         quantity: Int
         description: String
         country: String
