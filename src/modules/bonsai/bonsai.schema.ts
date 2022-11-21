@@ -11,7 +11,7 @@ declare global {
         description: string,
         country: string,
         bonus_point:number,
-        image:string[],
+        image:string,
     }
 }
 
@@ -25,7 +25,7 @@ export default gql`
         price:Int,
         quantity: Int
         description: String
-        image: [String]
+        image: String
         country: String
         bonus_point:Float
         

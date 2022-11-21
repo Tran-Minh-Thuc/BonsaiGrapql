@@ -10,7 +10,7 @@ const bonsaiSchema = new Schema(
         country: { type: String, required: true, default: "country unknown"},
         bonus_point: { type: Number, required: true, default: 0},
         price: { type: Number, required: true, default: 0},
-        image: { type: [String], required: true, default: []}
+        image: { type: String, required: true, default: []}
     },
     {
         timestamps: true,
