@@ -10,7 +10,6 @@ const usersSchema = new Schema(
         address: {type:String, require: true},
         phone: {type:String, require: true},
         gender: {type:String, require: true},
-        point: {type:Number, require: true},
         role: {type:String, require: true},
         isActive: {type:Boolean, require: true},
         activeCode: {type:Number, require: true},

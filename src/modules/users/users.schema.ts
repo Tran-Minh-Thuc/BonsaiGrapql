@@ -11,7 +11,6 @@ declare global {
         address:String,
         phone:String,
         gender:String,
-        point: Number,
         role: String,
         isActive:Boolean,
         activeCode : Number
@@ -29,7 +28,6 @@ export default gql`
         address:String
         phone:String
         gender:String
-        point: Int
         role: String
         isActive:Boolean
         activeCode : Int
@@ -87,7 +85,6 @@ export default gql`
         activeByIdAndCode(_id:ID,code:String) : ResultResponseUser
         updateUserPassword(_id:ID,password:String) : ResultResponseUser
         deleteUserById(_id:ID): ResultResponseUser
-        uploadImageById(file: Upload): ResultResponseUser
     }
 
     # INPUT

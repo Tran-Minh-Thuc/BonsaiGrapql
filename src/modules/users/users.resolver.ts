@@ -55,7 +55,7 @@ export const usersResolver = {
                 return {
                     code: httpResponse.NOT_FOUND.CODE,
                     status: false,
-                    message: httpResponse.NOT_FOUND.MESSAGE + ` : Can't find user have id = ${_id}`,
+                    message: httpResponse.NOT_FOUND.MESSAGE + ` : Không thể tim  dùng với id = ${_id}`,
                     data: null
                 }
             }
@@ -90,7 +90,7 @@ export const usersResolver = {
                 return {
                     code: httpResponse.NOT_FOUND.CODE,
                     status: false,
-                    message: httpResponse.NOT_FOUND.MESSAGE+ `: Can't find user have name = ${name}`,
+                    message: httpResponse.NOT_FOUND.MESSAGE+ `: Không thể tìm người dùng có tên = ${name}`,
                     data: null
                 }
             }
@@ -126,7 +126,7 @@ export const usersResolver = {
                 return {
                     code: httpResponse.NOT_FOUND.CODE,
                     status: false,
-                    message: httpResponse.NOT_FOUND.MESSAGE+ `: Can't find user have email = ${email}`,
+                    message: httpResponse.NOT_FOUND.MESSAGE+ `: Không thể tìm người dùng có email = ${email}`,
                     data: null
                 }
             }
@@ -162,7 +162,7 @@ export const usersResolver = {
                 return {
                     code: httpResponse.NOT_FOUND.CODE,
                     status: false,
-                    message: httpResponse.NOT_FOUND.MESSAGE+ `: Can't find user have phone = ${phone}`,
+                    message: httpResponse.NOT_FOUND.MESSAGE+ `: Không thể tìm người dùng có số điện thoại = ${phone}`,
                     data: null
                 }
             }
@@ -207,7 +207,7 @@ export const usersResolver = {
             if (!user.isActive) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Account not active",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Tài khoản chưa được kích hoạt",
                     status: false,
                 }
             }
@@ -217,7 +217,7 @@ export const usersResolver = {
             if (!validPassword) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Wrong password",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Sai mật khẩu",
                     status: false,
                 }
             }
@@ -265,7 +265,7 @@ export const usersResolver = {
                 return {
                     code: httpResponse.NOT_FOUND.CODE,
                     status: false,
-                    message: httpResponse.NOT_FOUND.MESSAGE + ` : Can't find user match with email = ${email}`,
+                    message: httpResponse.NOT_FOUND.MESSAGE + ` : Không thể tìm người dùng có email = ${email}`,
                     data: null
                 }
             }
@@ -303,7 +303,7 @@ export const usersResolver = {
             if (!emailRegex.test(user.email)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Email must be format abc@xyz.com",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Định dạng email phải là abc@xyz.com",
                     status: false,
                 }
             }
@@ -314,7 +314,7 @@ export const usersResolver = {
             if ( existsUser!== null && existsUser.length != 0) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Email already used",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Email đã được sử dụng",
                     status: false,
                 }
             }
@@ -323,7 +323,7 @@ export const usersResolver = {
             if (!passwordRegex.test(user.password)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Password containing at least 8 characters, 1 number, 1 upper, 1 lowercase and 1 special character",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " :Mật khẩu phải chứa ít nhất 8 ký tự bao gồm: 1 số, 1 chữ in hoa,1 chữ thường,1 ký tự đặc biệt",
                     status: false,
                 }
             }
@@ -331,7 +331,7 @@ export const usersResolver = {
             if (!usernameRegex.test(convert_vi_to_en(user.name))) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Username not contains character or number",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Tên người dùng không chứa chữ số",
                     status: false,
                 }
             }
@@ -339,7 +339,7 @@ export const usersResolver = {
             if (!imageRegex.test(user.avatar)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Avatar only support (jpg|jpeg|png|svg)",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Ảnh đại diện chỉ hỗ trợ (jpg|jpeg|png|svg)",
                     status: false,
                 }
             }
@@ -349,7 +349,7 @@ export const usersResolver = {
             if (!phoneRegex.test(user.phone)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Phone number must have 10 to 12 number and first number is zero",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Số điện thoại phải có 10-12 số và số đầu tiên là 0",
                     status: false,
                 }
             }
@@ -359,15 +359,15 @@ export const usersResolver = {
             if (existsUserPhone !== null && existsUserPhone.length != 0) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Phone number already used",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Số điện thoại đã được sử dụng",
                     status: false,
                 }
             }
 
-            if (user.gender === "" || (user.gender !== "Male" && user.gender !== "Female" && user.gender !== "Hide")) {
+            if (user.gender === "" || (user.gender !== "Nam" && user.gender !== "Nữ" && user.gender !== "Hide")) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Gender must be 'Male' or 'Female' or 'Hide'",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Giới tính phải là 'Nam' hoặc 'Nữ'",
                     status: false,
                 }
             }
@@ -390,7 +390,7 @@ export const usersResolver = {
             if (createUser === null) {
                 return {
                     code: httpResponse.INTERNAL_SERVER_ERROR.CODE,
-                    message: httpResponse.INTERNAL_SERVER_ERROR.MESSAGE + " : Fail create new user [user.service error]",
+                    message: httpResponse.INTERNAL_SERVER_ERROR.MESSAGE + " : Tạo thất bại [user.service error]",
                     status: false,
                 };
             }
@@ -434,7 +434,7 @@ export const usersResolver = {
             if (!emailRegex.test(user.email)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Email must be format abc@xyz.com",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Email phải có dạng abc@xyz.com",
                     status: false,
                 }
             }
@@ -445,7 +445,7 @@ export const usersResolver = {
             if(userByEMail !== null && userByEMail.length !=0 && !userByEMail._id.equals(_id)){
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Email have used",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Email đã được sử dụng",
                     status: false,
                 }
             }
@@ -454,7 +454,7 @@ export const usersResolver = {
             if (!usernameRegex.test(convert_vi_to_en(user.name))) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Username must contains character or number",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Tên người dùng không được chứa ký tự số",
                     status: false,
                 }
             }
@@ -462,7 +462,7 @@ export const usersResolver = {
             if (!imageRegex.test(user.avatar)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Avatar only support (jpg|jpeg|png|svg)",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Ảnh đại diện chỉ hỗ trợ (jpg|jpeg|png|svg)",
                     status: false,
                 }
             }
@@ -472,7 +472,7 @@ export const usersResolver = {
             if (!phoneRegex.test(user.phone)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Phone number must have 10 to 12 number and first number is zero",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Số điện thoại phải có 10-12 số và số đầu tiên là 0",
                     status: false,
                 }
             }
@@ -482,34 +482,27 @@ export const usersResolver = {
             if (existsUserPhone !== null && existsUserPhone.length != 0 && !existsUserPhone._id.equals(_id)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Phone number already used by another user",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Số điện thoại đã được sử dụng",
                     status: false,
                 }
             }
 
             //Gender
-            if (user.gender === "" || (user.gender !== "Male" && user.gender !== "Female" && user.gender !== "Hide")) {
+            if (user.gender === "" || (user.gender !== "Nam" && user.gender !== "Nữ")) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Gender must be 'Male' or 'Female' or 'Hide'",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Giới tính phải là Nam hoặc Nữ",
                     status: false,
                 }
             }
 
-            //Point
-            if(user.point === null || !Number.isInteger(user.point) || user.point < 0){
-                return {
-                    code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Point must be 'positive number'",
-                    status: false,
-                }
-            }
+            
             const updateUser = await usersService.updateUsers(_id,user);
 
             if (updateUser === null) {
                 return {
                     code: httpResponse.INTERNAL_SERVER_ERROR.CODE,
-                    message: httpResponse.INTERNAL_SERVER_ERROR.MESSAGE + " : Fail update user",
+                    message: httpResponse.INTERNAL_SERVER_ERROR.MESSAGE + " : Cập nhật không thành công [Lỗi hệ thống]",
                     status: false,
                 };
             }
@@ -534,7 +527,7 @@ export const usersResolver = {
             if (!activeCodeRegex.test(code)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Code s a number and have 6 character",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : OTP phải có 6 ký tự",
                     status: false,
                 }
             }
@@ -550,21 +543,21 @@ export const usersResolver = {
             else if(user.length == 0){
                 return {
                     code: httpResponse.NOT_FOUND.CODE,
-                    message: httpResponse.NOT_FOUND.MESSAGE + ` : Can't find user with id ${_id}`,
+                    message: httpResponse.NOT_FOUND.MESSAGE + ` : Không thể tìm người dùng có id ${_id}`,
                     status: false,
                 }
             }
             else if(user.isActive){
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + ` : User ${_id} have already actived`,
+                    message: httpResponse.FORBIDDEN.MESSAGE + ` : Người dùng có id = ${_id} đã được kích hoạt trước đó`,
                     status: false,
                 }
             }
             else if(code != user.activeCode){
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + ` : code not exactly`,
+                    message: httpResponse.FORBIDDEN.MESSAGE + ` : OTP không chính xác`,
                     status: false,
                 }
             }
@@ -573,7 +566,7 @@ export const usersResolver = {
             if(!activeReuslt){
                 return {
                     code: httpResponse.INTERNAL_SERVER_ERROR.CODE,
-                    message: httpResponse.INTERNAL_SERVER_ERROR.MESSAGE + ` : Can't active ${_id}`,
+                    message: httpResponse.INTERNAL_SERVER_ERROR.MESSAGE + ` : Không thể kích hoạt [Lỗi hệ thống]`,
                     status: false,
                 }
             } 
@@ -598,7 +591,7 @@ export const usersResolver = {
             if (!passwordRegex.test(password)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " : Password containing at least 8 characters, 1 number, 1 upper, 1 lowercase and 1 special character",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " : Mật khẩu phải chứa ít nhất 8 ký tự bao gồm: 1 số, 1 chữ in hoa,1 chữ thường,1 ký tự đặc biệt",
                     status: false,
                 }
             }
@@ -614,7 +607,7 @@ export const usersResolver = {
             else if(user.length == 0){
                 return {
                     code: httpResponse.NOT_FOUND.CODE,
-                    message: httpResponse.NOT_FOUND.MESSAGE + ` : Can't find user with id ${_id}`,
+                    message: httpResponse.NOT_FOUND.MESSAGE + ` : Không thể tìm người dùng có id ${_id}`,
                     status: false,
                 }
             }
@@ -622,7 +615,7 @@ export const usersResolver = {
            if(cmpPassword){
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + ` : The new password is the same as the current password`,
+                    message: httpResponse.FORBIDDEN.MESSAGE + ` : Mật khẩu mới trùng với mật khẩu hiện tại`,
                     status: false,
                 }
             }
@@ -633,7 +626,7 @@ export const usersResolver = {
             if(!changePassword){
                 return {
                     code: httpResponse.INTERNAL_SERVER_ERROR.CODE,
-                    message: httpResponse.INTERNAL_SERVER_ERROR.MESSAGE + ` : Can't change password ${_id}`,
+                    message: httpResponse.INTERNAL_SERVER_ERROR.MESSAGE + ` : Không thể thay đổi mật khẩu [Lỗi hệ thống] ${_id}`,
                     status: false,
                 }
             } 
@@ -667,7 +660,7 @@ export const usersResolver = {
             else if(user.length == 0){
                 return {
                     code: httpResponse.NOT_FOUND.CODE,
-                    message: httpResponse.NOT_FOUND.MESSAGE + ` : Can't find user with id ${_id}`,
+                    message: httpResponse.NOT_FOUND.MESSAGE + ` : Không thể tìm người dùng có id = ${_id}`,
                     status: false,
                 }
             }
@@ -677,7 +670,7 @@ export const usersResolver = {
             if(!deleteResult){
                 return {
                     code: httpResponse.INTERNAL_SERVER_ERROR.CODE,
-                    message: httpResponse.INTERNAL_SERVER_ERROR.MESSAGE + ` : Can't delete user with id ${_id}`,
+                    message: httpResponse.INTERNAL_SERVER_ERROR.MESSAGE + ` : Không thể xoá người dùng có id = ${_id}`,
                     status: false,
                 }
             } 
@@ -689,9 +682,7 @@ export const usersResolver = {
                 data:deleteResult
             }
         },
-        uploadImageById: async (root: Users, args: any, context)=>{
-            console.log(args);
-        },
+        
         // base: async (root: Users, args: any, context)=>{
 
         // },
