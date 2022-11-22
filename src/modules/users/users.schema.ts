@@ -105,6 +105,7 @@ export default gql`
         avatar:String
         phone:String
         gender:String
+        address:String
     }
 
     input CreateUsersInput {
