@@ -74,7 +74,6 @@ export const permission = {
         IPNURL: isAuthentication,
 
         updateUserById: isAuthentication,
-        activeByIdAndCode: isAuthentication,
         updateUserPassword : isAuthentication,
         deleteUserById: isAdmin,
 
