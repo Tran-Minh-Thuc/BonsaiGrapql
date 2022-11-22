@@ -73,7 +73,6 @@ export const permission = {
         createPaymentURL: isAuthentication,
         IPNURL: isAuthentication,
 
-        sendActiveCode: isAuthentication,
         updateUserById: isAuthentication,
         activeByIdAndCode: isAuthentication,
         updateUserPassword : isAuthentication,
