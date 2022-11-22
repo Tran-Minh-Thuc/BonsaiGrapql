@@ -199,7 +199,7 @@ export const usersResolver = {
             if (user == null || user.length == 0) {
                 return {
                     code: httpResponse.NOT_FOUND.CODE,
-                    message: httpResponse.NOT_FOUND.MESSAGE,
+                    message: httpResponse.NOT_FOUND.MESSAGE + ": Tài khoản không tồn tại",
                     status: false,
                 }
             }
