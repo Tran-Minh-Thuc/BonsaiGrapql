@@ -15,7 +15,6 @@ export const permission = {
         
         getOneBonsai: isAuthentication,
         
-        getAllCategory: isAuthentication,
         getOneCategory: isAuthentication,
         
         getAllModel: isAuthentication,
