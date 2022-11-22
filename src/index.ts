@@ -85,6 +85,7 @@ const main = async () => {
         typeDefs: typeDefs,
         resolvers: resolvers,
         schema: schema,
+        
         context: (req) => {
             user: {
                 try {

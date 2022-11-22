@@ -323,7 +323,7 @@ export const usersResolver = {
             if (!passwordRegex.test(user.password)) {
                 return {
                     code: httpResponse.FORBIDDEN.CODE,
-                    message: httpResponse.FORBIDDEN.MESSAGE + " :Mật khẩu phải chứa ít nhất 8 ký tự bao gồm: 1 số, 1 chữ in hoa,1 chữ thường,1 ký tự đặc biệt",
+                    message: httpResponse.FORBIDDEN.MESSAGE + " :Mật khẩu phải chứa ít nhất 8 ký tự bao gồm { 1 số, 1 chữ in hoa,1 chữ thường,1 ký tự đặc biệt}",
                     status: false,
                 }
             }
