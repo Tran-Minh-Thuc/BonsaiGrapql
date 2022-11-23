@@ -3,7 +3,7 @@ import _ from "lodash";
 
 
 export default async function getDataWithPagination(queryInput: QueryInput = {}, model: any) {
-    const limit = queryInput.limit || 10;
+    const limit = queryInput.limit;
     const skip = ((queryInput.page || 1) - 1) * limit || 0;
     const order = queryInput.order;
     const search = queryInput.search;

@@ -107,12 +107,12 @@ export default gql`
     }
 
     input CreateCartInput {
-        name: String!
+        userId : ID
         itemCart: [CreateItemCartInput!]!
     }
 
     input UpdateCartInput {
         name: String
-        itemCart: [CreateItemCartInput!]
+        itemCart: [CreateItemCartInput]
     }
 `
