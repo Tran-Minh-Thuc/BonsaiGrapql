@@ -1,13 +1,18 @@
 import "dotenv/config";
 import * as database from "./config/database.config";
 import _ from "lodash";
-import { ApolloServer, gql } from "apollo-server";
+import { ApolloServer, gql } from "apollo-server-express";
 import { loadGraphqlResolver, loadGraphqlSchema } from "./helper/autoloader";
 import { shield, rule, allow, deny, and, not, IRule } from "graphql-shield";
 import jwt from "jsonwebtoken"
 import { applyMiddleware, IMiddleware } from "graphql-middleware";
 import { makeExecutableSchema } from "graphql-tools";
 import { permission } from "./helper/shield";
+import express from 'express';
+import { graphqlUploadExpress } from "graphql-upload-ts";
+import cors from "cors";
+
+
 
 
 const main = async () => {
@@ -71,7 +76,7 @@ const main = async () => {
     // Load .resolver.ts
     const grapqlResolver = await loadGraphqlResolver();
     resolvers = _.merge(resolvers, grapqlResolver);
-    
+
     const schema = applyMiddleware(
         makeExecutableSchema({
             typeDefs,
@@ -79,7 +84,7 @@ const main = async () => {
         }),
         shield(permission)
     )
-    
+
 
     const server = new ApolloServer({
         typeDefs: typeDefs,
@@ -97,9 +102,22 @@ const main = async () => {
             }
         }
     })
+    await server.start();
 
-    server.listen({ port: process.env.PORT }).then(({ url }) => {
-        console.log(`[Info] server ready at ${url}`);
+    const app = express();
+    app.use(express.json());
+    app.use(cors());
+    app.use(graphqlUploadExpress());
+    
+
+    app.use(express.urlencoded({ extended: true }));
+
+    server.applyMiddleware({ app });
+
+
+    app.listen(process.env.PORT, () => {
+        console.log(`App is running on port ${process.env.PORT}`);
+        console.log(`Graphql EndPoint Path: ${server.graphqlPath}`);
     })
 }
 main();
